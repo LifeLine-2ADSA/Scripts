@@ -29,7 +29,7 @@ if test $confirmacao = "Y" || test $confirmacao = "y"; then
 	echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Deseja aumentar a velocidade do download usando a melhor fonte? (Y/n)"
 	read mirror
 	if test $mirror = "Y" || test $mirror = "y"; then
-		echo "$(tput setaf)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Buscando a fonte com maior velocidade de download"
+		echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Buscando a fonte com maior velocidade de download"
 		sudo nala fetch --auto
 		echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Melhor fonte de download selecionada! Prosseguindo para o download"
 	else
@@ -48,7 +48,7 @@ if test $confirmacao = "Y" || test $confirmacao = "y"; then
 		read java
 		if test $java = "Y" || test $java = "y"; then
 			sudo nala install openjdk-17-jre -y
-			echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Agora que o Java foi instalado podemos prossguir com a instalação.."
+			echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Agora que o Java foi instalado podemos prosseguir com a instalação.."
 			sleep 3
 			clear
 		else
@@ -70,15 +70,15 @@ if test $confirmacao = "Y" || test $confirmacao = "y"; then
 			if test $att = "Y" || test $att = "y"; then
 				git pull
 				sleep 2
-				echo "$(tput setaf)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Aplicação atualizada!"
+				echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Aplicação atualizada!"
 				sleep 1
-				echo "$(tput setaf)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Deseja executar a aplicação(Y/n)?"
+				echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Deseja executar a aplicação(Y/n)?"
 				executar
 			fi
 		else
 			echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Instalando nossa solução.."
 			git clone "$repositorio"
-			echo "$(tput setaf)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Deseja executar a aplicação?(Y/n)"
+			echo "$(tput setaf 6)$(tput smso)<Instalador LifeLine>$(tput sgr0): $(tput setaf 7)Deseja executar a aplicação?(Y/n)"
 			executar
 		fi
 	else
