@@ -1,9 +1,9 @@
 #!/bin/bash
 readonly USERNAME=root
-readonly PASSWORD=pLIJYGRD123!
+readonly PASSWORD=urubu100
 readonly DATABASE=lifeline
 
-repositorio="https://github.com/LifeLine-2ADSA/scriptSh/"
+repositorio="https://github.com/LifeLine-2ADSA/JAR-LifeLine.git"
 sudo apt update
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -18,13 +18,14 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# sudo apt install nala -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
+sudo apt install nala -y
 
-# sudo nala install git -y
-
+sudo nala install git -y
+docker compose down
 docker compose up
 docker start lifelineBD > /dev/null
+# sudo docker run -d -p 3306:3306 --name lifelineBD -e "MYSQL_ROOT_PASSWORD=$PASSWORD" vicg0/lifeline-1.0
 
 LOGIN=0
 touch docker.env
@@ -56,3 +57,15 @@ echo "SENHA=$SENHA" >> docker.env
 
 fi
 done
+#sudo nala install openjdk-17-jre -y
+
+#rm -rf JAR-lifeLine
+#git clone "$repositorio"
+#cd JAR-LifeLine
+#cd lifeline
+#cd target
+#java -jar lifeline-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+#mysql -u root -p
+#$PASSWORD
+#SELECT * FROM $DATABASE.usuario;
