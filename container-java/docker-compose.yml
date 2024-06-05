@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./app
+    container_name: app_container
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: lifeline
+      DB_USER: root
+      DB_PASSWORD: urubu100
+    networks:
+      - app-network
+
+  db:
+    image: amandaribeiro/lifeline-mysql
+    container_name: db_container
+    environment:
+      MYSQL_ROOT_PASSWORD: urubu100
+      MYSQL_DATABASE: lifeline
+    ports:
+      - "3307:3306"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
