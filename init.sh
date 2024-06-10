@@ -6,7 +6,7 @@ readonly PASSWORD=urubu100
 readonly DATABASE=lifeline
 
 # URL do repositório Git onde o projeto está localizado
-repositorio="https://github.com/LifeLine-2ADSA/JAR-LifeLine.git"
+repositorio="https://github.com/LifeLine-2ADSA/Scripts.git"
 
 # Atualiza as listas de pacotes disponíveis e instala ferramentas necessárias
 sudo apt update
@@ -33,6 +33,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 # Instalação de outras dependências
 sudo apt install -y nala git
 
+
 # Instalação do Docker Compose diretamente do binário
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -47,6 +48,9 @@ while ! sudo systemctl is-active --quiet docker; do
     sleep 2
 done
 echo "Docker iniciado com sucesso."
+
+git clone $repositorio
+cd scriptDocker
 
 # Derruba e inicia os contêineres usando o Docker Compose
 docker-compose down
