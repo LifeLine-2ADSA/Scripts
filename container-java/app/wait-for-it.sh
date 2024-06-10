@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
+host="$1"
+shift
+port="$1"
+shift
 
-HOST=$1
-PORT=$2
-shift 2
-CMD="$@"
+echo "Host: $host, Port: $port"
+echo "Aguardando a inicialização do banco de dados em $host:$port..."
 
-echo "Waiting for $HOST:$PORT..."
-while ! nc -z $HOST $PORT; do
+while ! nc -z "$host" "$port"; do
   sleep 1
 done
 
-echo "$HOST:$PORT is available, starting application..."
-exec $CMD
-
+echo "Banco de dados disponível. Iniciando o aplicativo..."
+exec "$@"

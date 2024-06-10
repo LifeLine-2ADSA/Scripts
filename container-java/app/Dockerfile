@@ -2,7 +2,9 @@
 FROM openjdk:17-slim
 
 # Instalar netcat e outras dependências necessárias
-RUN apt-get update && apt-get install -y netcat-openbsd procps
+RUN apt-get update && \
+    apt-get install -y netcat-openbsd procps && \
+    rm -rf /var/lib/apt/lists/*
 
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /app
@@ -14,5 +16,5 @@ COPY wait-for-it.sh /app/wait-for-it.sh
 # Torne o script executável
 RUN chmod +x /app/wait-for-it.sh
 
-# Especifique o comando para rodar a aplicação Java
-CMD ["./wait-for-it.sh", "db", "3306", "--", "java", "-jar", "/app/lifeline.jar"]
+# Carregar as variáveis de ambiente e especificar o comando para rodar a aplicação Java
+CMD ./wait-for-it.sh db 3306 -- java -jar /app/lifeline.jar $EMAIL $SENHA

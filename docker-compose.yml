@@ -1,11 +1,33 @@
-version: '1.0'
+version: '3.8'
 
 services:
-  mysql:
-    container_name: lifelineBD
-    image: vicg0/lifeline-1.0
-    restart: always
+  app:
+    image: amandaribeiro/lifeline-java-app 
+    container_name: app_container
+    depends_on:
+      - db
     environment:
-      MYSQL_ROOT_PASSWORD: pLIJYGRD123!
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: lifeline
+      DB_USER: root
+      DB_PASSWORD: urubu100
+      EMAIL: ${EMAIL}
+      SENHA: ${SENHA}
+    networks:
+      - app-network
+
+  db:
+    image: amandaribeiro/lifeline-mysql
+    container_name: db_container
+    environment:
+      MYSQL_ROOT_PASSWORD: urubu100
+      MYSQL_DATABASE: lifeline
     ports:
-      - "3306:3306"
+      - "3307:3306"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
