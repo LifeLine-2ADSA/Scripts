@@ -6,7 +6,7 @@ readonly PASSWORD=urubu100
 readonly DATABASE=lifeline
 
 # URL do repositório Git onde o projeto está localizado
-repositorio="https://github.com/LifeLine-2ADSA/Scripts.git"
+repositorio="https://github.com/LifeLine-2ADSA/scriptDocker.git"
 
 # Atualiza as listas de pacotes disponíveis e instala ferramentas necessárias
 sudo apt update
