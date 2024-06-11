@@ -60,6 +60,8 @@ while ! sudo systemctl is-active --quiet docker; do
 done
 echo "Docker iniciado com sucesso."
 
+sudo chmod 666 /var/run/docker.sock
+
 docker-compose down
 docker-compose up -d db
 
